@@ -1,0 +1,14 @@
+torch==1.4.0
+timm>=0.1.28
+torchvision==0.5.0
+pycocotools
+pyyaml
+tqdm
+opencv-python
+bbaug
+Pillow
+numpy<=1.17.5
+matplotlib
+omegaconf>=2.0
+imutils
+opencv-python
