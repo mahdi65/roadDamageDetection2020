@@ -5,16 +5,17 @@ This repository contain codes for paper "An Efficient and scalable deep learning
 
 The solution is based on EfficientDet paper by Tan et al.
 
-
-
-<img src="doc/India_006794.jpg" width="400"> <img src="doc/Japan_000316.jpg" width="400"> 
-<img src="doc/Japan_011814.jpg" width="400"> <img src="doc/Japan_012356.jpg" width="400"> 
-<img src="doc/SETX_1.jpg" width="400"> <img src="doc/SETX_2.jpg" width="400"> 
-<img src="doc/SETX_3.jpg" width="400"> <img src="ddoc/SETX_4.jpg" width="400"> 
-
-
-
 ![](doc/bigdata21.png)
+
+
+<img src="doc/India_006794.jpg" width="350"> <img src="doc/Japan_000316.jpg" width="350"> 
+<img src="doc/Japan_011814.jpg" width="350"> <img src="doc/Japan_012356.jpg" width="350"> 
+<img src="doc/SETX_1.jpg" width="350"> <img src="doc/SETX_2.jpg" width="350"> 
+<img src="doc/SETX_3.jpg" width="350"> <img src="doc/SETX_4.jpg" width="350"> 
+
+
+
+
 
 
 
