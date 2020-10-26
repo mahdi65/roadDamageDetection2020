@@ -8,10 +8,10 @@ The solution is based on EfficientDet paper by Tan et al.
 
 
 
-![](doc/India_006794.jpg) ![](doc/Japan_000316.jpg)
-![](doc/Japan_011814.jpg) ![](doc/Japan_012356.jpg)
-![](doc/SETX_1.jpg) ![](doc/SETX_2.jpg)
-![](doc/SETX_3.jpg) ![](doc/SETX_4.jpg)
+![](doc/India_006794.jpg width="40%") ![](doc/Japan_000316.jpg width="40%")
+![](doc/Japan_011814.jpg width="40%") ![](doc/Japan_012356.jpg width="40%")
+![](doc/SETX_1.jpg width="40%") ![](doc/SETX_2.jpg width="40%")
+![](doc/SETX_3.jpg width="40%") ![](doc/SETX_4.jpg width="40%")
 
 ![](doc/bigdata21.png)
 
