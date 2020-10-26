@@ -8,7 +8,10 @@ The solution is based on EfficientDet paper by Tan et al.
 
 
 
-![Image of Yaktocat]()
+![](doc/India_006794.jpg) ![](doc/Japan_000316.jpg)
+![](doc/Japan_011814.jpg) ![](doc/Japan_012356.jpg)
+![](doc/SETX_1.jpg) ![](doc/SETX_2.jpg)
+![](doc/SETX_3.jpg) ![](doc/SETX_4.jpg)
 
 ![](doc/bigdata21.png)
 
