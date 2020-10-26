@@ -48,13 +48,12 @@ Consider unisng a workspace for cleaner
 
 `pip install -r requirements.txt` 
 
-install apex : 
+install apex (2020-10-26): 
 
 ```
-apt-get install  git
 git clone https://github.com/NVIDIA/apex
 pip install -r apex/requirements.txt
-pip install -v --no-cache-dir ./apex 
+pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./apex
 ```
 
 
