@@ -59,26 +59,28 @@ pip install -v --no-cache-dir ./apex
 
 
 2. download Dataset :
-for ease of use we have provided annotations and ... in coco format downloadable from the following link : 
+for ease of use we have provided annotations and ... in coco format downloadable from this [link](https://drive.google.com/file/d/1IHaqAxpMtFwPHia7msB_1QPAywPgg7fW/view?usp=sharing). 
 
 
-otherwise one can download original data from here and convert using tools provided in utils folder : 
+otherwise one can download original data from sekilab github repo and convert using tools provided in utils folder.
  
 
 3. for training : 
 
 - Train on single GPU : 
-
-`python train.py ../data --model tf_efficientdet_d0 -b 40 --amp --lr .15 --sync-bn --opt fusedmomentum --warmup-epochs 3 --lr-noise 0.3 0.9 --model-ema --model-ema-decay 0.9998 -j 25 --epochs 300`
+```
+python train.py ../data --model tf_efficientdet_d0 -b 40 --amp --lr .15 --sync-bn --opt fusedmomentum --warmup-epochs 3 --lr-noise 0.3 0.9 --model-ema --model-ema-decay 0.9998 -j 25 --epochs 300
+```
 
 - Distributed Training : 
-
-`./distributed_train.sh 3 ../data --model tf_efficientdet_d0 -b 40 --amp --lr .15 --sync-bn --opt fusedmomentum --warmup-epochs 3 --lr-noise 0.3 0.9 --model-ema --model-ema-decay 0.9998 -j 25 --epochs 300 `
+```
+./distributed_train.sh 3 ../data --model tf_efficientdet_d0 -b 40 --amp --lr .15 --sync-bn --opt fusedmomentum --warmup-epochs 3 --lr-noise 0.3 0.9 --model-ema --model-ema-decay 0.9998 -j 25 --epochs 300 
+```
 
 4. for inference on testset and generating submission file :
-
-`python code/infer.py ./data --model tf_efficientdet_d0 --checkpoint ./path/to/model/checkpoint --use-ema --anno test1 -b 17 --mean 0.4535 0.4744 0.4724 --std 0.2835 0.2903 0.3098 -t 0.300`
-
+```
+python code/infer.py ./data --model tf_efficientdet_d0 --checkpoint ./path/to/model/checkpoint --use-ema --anno test1 -b 17 --mean 0.4535 0.4744 0.4724 --std 0.2835 0.2903 0.3098 -t 0.300
+```
 5. Image Inference to generate detected images
 
 - first create image_info_annotations(e.g. if image folder is in `../data` path. One should first create image info in json format using `python utils/createimageinfo.py` then folder structure should be like )
@@ -96,9 +98,9 @@ otherwise one can download original data from here and convert using tools provi
 ```
 
 following command will create generated file with bounding boxes in ./predictions
-
-`python detector.py ../data --model tf_efficientdet_d0 --checkpoint path.to/modelfile.pth.tar --anno testfolder  -b 20 --use-ema  --tosave ./predictions `
-
+```
+python detector.py ../data --model tf_efficientdet_d0 --checkpoint path.to/modelfile.pth.tar --anno testfolder  -b 20 --use-ema  --tosave ./predictions 
+```
 
 ### Utils 
 
