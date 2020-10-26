@@ -6,7 +6,7 @@ This repository contain codes for paper "An Efficient and scalable deep learning
 The solution is based on EfficientDet paper by Tan et al.
 
 
-![artitecture]()
+![artitecture](doc/SETX_1.jpg)
 
 ![Image of Yaktocat]()
 
