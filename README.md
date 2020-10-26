@@ -6,17 +6,15 @@ This repository contain codes for paper "An Efficient and scalable deep learning
 The solution is based on EfficientDet paper by Tan et al.
 
 
-![artitecture](doc/SETX_1.jpg)
+
 
 ![Image of Yaktocat]()
 
-
----add paper image---
-
----add sample output---
+![](doc/bigdata21.png)
 
 
-### Model checkpoints 
+
+#### Model checkpoints 
 
 | Model                  	| Input Image Resolution 	| #params 	| Inf Time (Image/ms)  b=16 	| AP   	| AP50 	| AP75 	| F1    	|
 |------------------------	|------------------------	|---------	|:-------------------------:	|------	|------	|------	|-------	|
@@ -30,7 +28,7 @@ The solution is based on EfficientDet paper by Tan et al.
 | D3- AUG [checkpoint](https://drive.google.com/file/d/1VpH6HPFWNuiv88zT_cYOKSFM67A4PlpQ/view?usp=sharing) 	| 796                    	| 11.9M   	| 57                        	| 22.6 	| 53.4 	| 14.7 	| 56.8  	|
 | D4 [checkpoint](https://drive.google.com/file/d/1LdGPqPPQRP8gj8ZcEtfYNP4rbBN1GqkK/view?usp=sharing)      	| 1024                   	| 20.5M   	| 38                        	| 22.8 	| 53.3 	| 15.1 	| 57.2  	|
 | D7-AUG [checkpoint](https://drive.google.com/file/d/1wVNMeAMHyS85qJ1hsxLxnzFpVw_oT8Mz/view?usp=sharing)  	| 1536                   	| 51M     	| 10                        	| 23.4 	| 53.6 	| 15.0 	| 56.5  	|
-### Usage
+##### Usage
 
 Consider unisng a workspace for cleaner 
 
@@ -58,7 +56,7 @@ pip install -v --no-cache-dir ./apex
 2. download Dataset :
 for ease of use we have provided annotations and ... in coco format downloadable from the following link : 
 
-``
+
 otherwise one can download original data from here and convert using tools provided in utils folder : 
  
 
@@ -66,7 +64,7 @@ otherwise one can download original data from here and convert using tools provi
 
 - Train on single GPU : 
 
-`python train.py ../data --model tf_efficientdet_d0 -b 40 --amp --lr .15 --sync-bn --opt fusedmomentum --warmup-epochs 3 --lr-noise 0.3 0.9 --model-ema --model-ema-decay 0.9998 -j 25 --epochs 300 ` `
+`python train.py ../data --model tf_efficientdet_d0 -b 40 --amp --lr .15 --sync-bn --opt fusedmomentum --warmup-epochs 3 --lr-noise 0.3 0.9 --model-ema --model-ema-decay 0.9998 -j 25 --epochs 300`
 
 - Distributed Training : 
 
@@ -79,6 +77,8 @@ otherwise one can download original data from here and convert using tools provi
 5. Image Inference to generate detected images
 
 - first create image_info_annotations(e.g. if image folder is in `../data` path. One should first create image info in json format using `python utils/createimageinfo.py` then folder structure should be like )
+
+```
 ..
 ├── data
 │   └── annotations
@@ -87,6 +87,8 @@ otherwise one can download original data from here and convert using tools provi
 │   ├── Japan_XXX.jpg
 │   └── Czech_xxx.jpg
 |   └── ....
+
+```
 
 following command will create generated file with bounding boxes in ./predictions
 
@@ -103,8 +105,7 @@ Some utils are provided in utils folder such as  tools to calculate anchor boxes
 ### cite 
 Please cite if you use paper or code : 
 
-will be released.
-
+To be announced
 
 
 ### other repos used :
