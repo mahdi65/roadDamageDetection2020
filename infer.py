@@ -346,13 +346,13 @@ def validate(args):
         # print(sortedf1[0:2]) 
         # json.dump(results, open(args.results, 'w'), indent=4)
         json.dump(results, open(args.results, 'w'), indent=4)
-        coco_results = dataset.coco.loadRes(args.results)
-        coco_eval = COCOeval(dataset.coco, coco_results, 'bbox')
-        coco_eval.params.imgIds = img_ids  # score only ids we've used
-        coco_eval.evaluate()
-        coco_eval.accumulate()
-        coco_eval.summarize()
-        print(coco_eval.eval['params'])
+#         coco_results = dataset.coco.loadRes(args.results)
+#         coco_eval = COCOeval(dataset.coco, coco_results, 'bbox')
+#         coco_eval.params.imgIds = img_ids  # score only ids we've used
+#         coco_eval.evaluate()
+#         coco_eval.accumulate()
+#         coco_eval.summarize()
+#         print(coco_eval.eval['params'])
 
     json.dump(results, open(args.results, 'w'), indent=4)
 
