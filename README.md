@@ -81,7 +81,7 @@ python train.py ../data --model tf_efficientdet_d0 -b 40 --amp --lr .15 --sync-b
 
 4. for inference on testset and generating submission file :
 ```
-python infer.py ./data --model tf_efficientdet_d0 --checkpoint ./path/to/model/checkpoint --use-ema --anno test1 -b 17 -threshold 0.300
+python infer.py ./data --model tf_efficientdet_d0 --checkpoint ./path/to/model/checkpoint --use-ema --anno test1 -b 17 --threshold 0.300
 ```
 5. Image Inference to generate detected images
 
@@ -91,8 +91,8 @@ python infer.py ./data --model tf_efficientdet_d0 --checkpoint ./path/to/model/c
 ..
 ├── data
 │   └── annotations
-|       ├── image_info_testfolder.json
-├── testfolder
+|       ├── image_info_test1.json
+├── test1
 │   ├── Japan_XXX.jpg
 │   └── Czech_xxx.jpg
 |   └── ....
@@ -101,9 +101,13 @@ python infer.py ./data --model tf_efficientdet_d0 --checkpoint ./path/to/model/c
 
 following command will create generated file with bounding boxes in ./predictions
 ```
-python detector.py ../data --model tf_efficientdet_d0 --checkpoint path.to/modelfile.pth.tar --anno testfolder  -b 20 --use-ema  --tosave ./predictions 
+python detector.py ../data --model tf_efficientdet_d0 --checkpoint path.to/modelfile.pth.tar --anno test1  -b 20 --use-ema  --tosave ./predictions 
 ```
 
+for validation (AP scores) and benchmarking with `cuda.Event()` use the following command : 
+```
+python validate.py ../data --model tf_efficientdet_d0 --checkpoint path/to/model/checkpoint.pth.tar --anno val  -b 20 --use-ema
+```
 ### Utils 
 
 Some utils are provided in utils folder such as  tools to calculate anchor boxes ratis mean and std of train set and validation set and ... .
