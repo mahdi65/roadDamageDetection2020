@@ -33,12 +33,12 @@ The solution is based on EfficientDet paper by Tan et al.
 | D3- AUG [checkpoint](https://drive.google.com/file/d/1VpH6HPFWNuiv88zT_cYOKSFM67A4PlpQ/view?usp=sharing) 	| 796                    	| 11.9M   	| 57                        	| 22.6 	| 53.4 	| 14.7 	| 56.8  	|
 | D4 [checkpoint](https://drive.google.com/file/d/1LdGPqPPQRP8gj8ZcEtfYNP4rbBN1GqkK/view?usp=sharing)      	| 1024                   	| 20.5M   	| 38                        	| 22.8 	| 53.3 	| 15.1 	| 57.2  	|
 | D7-AUG [checkpoint](https://drive.google.com/file/d/1wVNMeAMHyS85qJ1hsxLxnzFpVw_oT8Mz/view?usp=sharing)  	| 1536                   	| 51M     	| 10                        	| 23.4 	| 53.6 	| 15.0 	| 56.5  	|
-##### Usage
+### Usage
 
 Consider unisng a workspace for cleaner 
 
 1. install required Libraries : 
-
+1.1.
 - python>= 3.6
 - pytorch 1.4 or 1.6
 - torchvision >= 0.5
@@ -47,6 +47,8 @@ Consider unisng a workspace for cleaner
 
 
 `pip install -r requirements.txt` 
+
+1.2.
 
 install apex (2020-10-26): 
 
@@ -71,7 +73,8 @@ otherwise one can download original data from sekilab github repo and convert us
 python train.py ../data --model tf_efficientdet_d0 -b 40 --amp --lr .15 --sync-bn --opt fusedmomentum --warmup-epochs 3 --lr-noise 0.3 0.9 --model-ema --model-ema-decay 0.9998 -j 25 --epochs 300
 ```
 
-- Distributed Training : 
+- Distributed Training : (note you may need to make the file executable before training using `chmod +x distributed_train.sh`)
+
 ```
 ./distributed_train.sh 3 ../data --model tf_efficientdet_d0 -b 40 --amp --lr .15 --sync-bn --opt fusedmomentum --warmup-epochs 3 --lr-noise 0.3 0.9 --model-ema --model-ema-decay 0.9998 -j 25 --epochs 300 
 ```
