@@ -81,7 +81,7 @@ python train.py ../data --model tf_efficientdet_d0 -b 40 --amp --lr .15 --sync-b
 
 4. for inference on testset and generating submission file :
 ```
-python code/infer.py ./data --model tf_efficientdet_d0 --checkpoint ./path/to/model/checkpoint --use-ema --anno test1 -b 17 --mean 0.4535 0.4744 0.4724 --std 0.2835 0.2903 0.3098 -t 0.300
+python infer.py ./data --model tf_efficientdet_d0 --checkpoint ./path/to/model/checkpoint --use-ema --anno test1 -b 17 -threshold 0.300
 ```
 5. Image Inference to generate detected images
 
