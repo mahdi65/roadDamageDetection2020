@@ -57,9 +57,9 @@ parser.add_argument('-t', '--threshold', default=0.001, type=float,
                     metavar='N', help='threshold to remove boxes smaller than it(def : 0.001)')
 parser.add_argument('--img-size', default=None, type=int,
                     metavar='N', help='Input image dimension, uses model default if empty')
-parser.add_argument('--mean', type=float, nargs='+', default=[0.4535, 0.4744, 0.4724], metavar='MEAN',
+parser.add_argument('--mean', type=float, nargs='+', default=[], metavar='MEAN',
                     help='Override mean pixel value of dataset')
-parser.add_argument('--std', type=float,  nargs='+', default=[0.2835, 0.2903, 0.3098], metavar='STD',
+parser.add_argument('--std', type=float,  nargs='+', default=None, metavar='STD',
                     help='Override std deviation of of dataset')
 parser.add_argument('--interpolation', default='bilinear', type=str, metavar='NAME',
                     help='Image resize interpolation type (overrides model)')
@@ -84,6 +84,15 @@ parser.add_argument('--torchscript', dest='torchscript', action='store_true',
 parser.add_argument('--results', default='./results.json', type=str, metavar='FILENAME',
                     help='JSON filename for evaluation results')
 
+
+getthresholds = {'d0' : [0.234,0.21,0.251,0.242],'d0aug' : [0.223,0.21,0.23,0.213],
+                'd1' : [0.312,0.227,0.321,0.291],'d1aug' : [0.249,0.216,0.245,0.237],
+                'd2' : [0.316,0.234,0.339,0.298],'d2aug' : [0.286,0.257,0.327,0.301],
+                'd3' : [0.385,0.318,0.436,0.384],'d3aug' : [0.328,0.375,0.411,0.342],
+                'd4' : [0.388,0.322,0.399,0.391],'d7' : [0.353,0.277,0.378,0.368]}
+              
+
+
 def getimageNamefromid(im_id):
     str_im_id = str(im_id)
     if str_im_id[0] == "1" :
@@ -99,6 +108,18 @@ def getimageNamefromid(im_id):
 def validate(args):
     setup_default_logging()
 
+
+
+
+    def setthresh():
+        if args.checkpoint.split("/")[-1].split("_")[0] in getthresholds.keys() :
+            return getthresholds[args.checkpoint.split("/")[-1].split("_")[0]]
+        else :
+            a = []
+            [ a.append(args.threshold) for x in range(4) ]
+            return a
+    threshs= setthresh()
+    print(threshs)
     # might as well try to validate something
     args.pretrained = args.pretrained or not args.checkpoint
     args.prefetcher = not args.no_prefetcher
@@ -202,7 +223,7 @@ def validate(args):
         from itertools import groupby
         results.sort(key=lambda x:x['image_id']) 
 
-        f= open(str(args.model)+"-"+str(args.anno)+"-"+str(args.threshold)+".txt","w+")
+        f= open(str(args.model)+"-"+str(args.anno)+"-"+str(min(threshs))+".txt","w+")
         # for item in tqdm(writetofilearrtay):
         xxx=0        
         for k,v in tqdm(groupby(results,key=lambda x:x['image_id'])):
@@ -210,13 +231,13 @@ def validate(args):
             f.write(getimageNamefromid(k)+",")#print(getimageNamefromid(k),", ")
             for i in v : 
               if i['category_id']>0 :
-                if (i['category_id'] ==1 and i['score'] >= 0.328 ) or (i['category_id'] ==2 and i['score'] >= 0.275 ) or \
-                  (i['category_id'] ==3 and i['score'] >= 0.411 ) or (i['category_id'] ==4 and i['score'] >= 0.342 ) : 
+                if (i['category_id'] ==1 and i['score'] >= threshs[0] ) or (i['category_id'] ==2 and i['score'] >= threshs[1] ) or \
+                  (i['category_id'] ==3 and i['score'] >= threshs[2] ) or (i['category_id'] ==4 and i['score'] >= threshs[3] ) : 
                     f.write(str(round(i['category_id']))+" "+str(round(i['bbox'][0]))+" "+str(round(i['bbox'][1]))+" "+
                                                          str(round(float(i['bbox'][0])+float(i['bbox'][2])))+" "+str(round(float(i['bbox'][1])+float(i['bbox'][3])))+" ")
             f.write('\n')    
                 # print(i['category_id']," ",i['bbox'][0]," ",i['bbox'][1]," ",i['bbox'][2]," ",i['bbox'][3]," ")   
-        print("counttt",xxx)
+        print("generated lines:",xxx)
         f.close()
 
 
@@ -346,13 +367,13 @@ def validate(args):
         # print(sortedf1[0:2]) 
         # json.dump(results, open(args.results, 'w'), indent=4)
         json.dump(results, open(args.results, 'w'), indent=4)
-#         coco_results = dataset.coco.loadRes(args.results)
-#         coco_eval = COCOeval(dataset.coco, coco_results, 'bbox')
-#         coco_eval.params.imgIds = img_ids  # score only ids we've used
-#         coco_eval.evaluate()
-#         coco_eval.accumulate()
-#         coco_eval.summarize()
-#         print(coco_eval.eval['params'])
+        # coco_results = dataset.coco.loadRes(args.results)
+        # coco_eval = COCOeval(dataset.coco, coco_results, 'bbox')
+        # coco_eval.params.imgIds = img_ids  # score only ids we've used
+        # coco_eval.evaluate()
+        # coco_eval.accumulate()
+        # coco_eval.summarize()
+        # print(coco_eval.eval['params'])
 
     json.dump(results, open(args.results, 'w'), indent=4)
 

@@ -148,8 +148,8 @@ def getimageNamefromid(im_id):
         raise Exception("ERROR")   
     return im_name + str(str_im_id[1:])+".jpg"
 
-def validate(args):
-    setup_default_logging()
+def validate(args): 
+    setup_default_logging() 
 
 
     def setthresh():
@@ -157,7 +157,7 @@ def validate(args):
             return getthresholds[args.checkpoint.split("/")[-1].split("_")[0]]
         else :
             a = []
-            [ a.append(0.26) for x in range(4) ]
+            [ a.append(args.threshold) for x in range(4) ]
             return a
 
     # might as well try to validate something
