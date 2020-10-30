@@ -57,9 +57,9 @@ parser.add_argument('-t', '--threshold', default=0.001, type=float,
                     metavar='N', help='threshold to remove boxes smaller than it(def : 0.001)')
 parser.add_argument('--img-size', default=None, type=int,
                     metavar='N', help='Input image dimension, uses model default if empty')
-parser.add_argument('--mean', type=float, nargs='+', default=None, metavar='MEAN',
+parser.add_argument('--mean', type=float, nargs='+', default=[0.4535, 0.4744, 0.4724], metavar='MEAN',
                     help='Override mean pixel value of dataset')
-parser.add_argument('--std', type=float,  nargs='+', default=None, metavar='STD',
+parser.add_argument('--std', type=float,  nargs='+', default=[0.2835, 0.2903, 0.3098], metavar='STD',
                     help='Override std deviation of of dataset')
 parser.add_argument('--interpolation', default='bilinear', type=str, metavar='NAME',
                     help='Image resize interpolation type (overrides model)')
