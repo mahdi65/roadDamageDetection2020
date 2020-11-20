@@ -1,6 +1,6 @@
 # Road Crack Detection Challange 2020 - IEEE Bigdata Cup Challange
 -----
-This repository contain codes for paper "An Efficient and scalable deep learning approach for road damage detection" 
+This repository contain codes for paper ["An Efficient And Scalable Deep Learning Approach for Road Damage Detection"](https://arxiv.org/abs/2011.09577)
 
 
 The solution is based on EfficientDet paper by Tan et al.
@@ -116,11 +116,17 @@ Some utils are provided in utils folder such as  tools to calculate anchor boxes
 
 
 ### cite 
-Please cite if you use paper or code : 
-
-To be announced
-
-
+Please cite if you use paper or code : Paper is accepted at IEEE BigData 2020.
+```
+@misc{naddafsh2020efficient,
+      title={An Efficient and Scalable Deep Learning Approach for Road Damage Detection}, 
+      author={Sadra Naddaf-sh and M-Mahdi Naddaf-sh and Amir R. Kashani and Hassan Zargarzadeh},
+      year={2020},
+      eprint={2011.09577},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
 ### other repos used :
 
  - a pytorch implementation of efficientDet by rwightman
