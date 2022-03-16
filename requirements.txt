@@ -1,5 +1,5 @@
 torch==1.4.0
-timm>=0.1.28
+timm==0.1.28
 torchvision==0.5.0
 pycocotools
 pyyaml
