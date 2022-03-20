@@ -60,7 +60,7 @@ pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cud
 
 
 2. download Dataset :
-for ease of use we have provided annotations and ... in coco format downloadable from this [link](https://drive.google.com/file/d/1IHaqAxpMtFwPHia7msB_1QPAywPgg7fW/view?usp=sharing). 
+for ease of use we have provided annotations and ... in coco format downloadable from  [train and validation sets](https://drive.google.com/file/d/1IHaqAxpMtFwPHia7msB_1QPAywPgg7fW/view?usp=sharing), and [test1 and test2 data](https://drive.google.com/uc?id=1apjJfNHUlKQS64IaHRg3qRp_T0NnZnnQ&export=download)(no annotation). 
 
 
 otherwise one can download original data from sekilab github repo and convert using tools provided in utils folder.
